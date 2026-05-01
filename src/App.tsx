@@ -1,8 +1,11 @@
+import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './routes'
+
 function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100 p-6">
-      
-    </main>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 

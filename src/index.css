@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+:root {
+  font-family: "Gilroy", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-weight-default: 600;
+  --font-size-default: 26px;
+  --line-height-default: 29px;
+  --letter-spacing-default: 0px;
+  --text-align-default: center;
+  --color-primary: #53b175;
+  --color-primary-hover: #49a06a;
+  --color-background: #e9e9e9;
+  --color-surface-dark: #1f2937;
+  --color-text-primary: #181725;
+  --color-text-on-primary: #ffffff;
+  --color-text-muted-on-dark: rgba(255, 255, 255, 0.8);
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --space-page: 28px;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+  font-weight: var(--font-weight-default);
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-default);
+  letter-spacing: var(--letter-spacing-default);
+  text-align: var(--text-align-default);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.bg-app {
+  background-color: var(--color-background);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-on-primary {
+  color: var(--color-text-on-primary);
+}
+
+.text-muted-on-dark {
+  color: var(--color-text-muted-on-dark);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font-size: 18px;
+  border-radius: var(--radius-lg);
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(31, 41, 55, 0.75);
+}
