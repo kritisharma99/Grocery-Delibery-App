@@ -7,7 +7,7 @@ interface PageShellProps {
 // PageShell.tsx
 export function PageShell({ children }: PageShellProps) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-primary">
+    <div className="relative min-h-screen overflow-hidden">
       {/* Background blobs */}
       <div className="absolute -top-16 -left-16 h-56 w-56 rounded-full bg-orange-200 opacity-70 blur-[60px]" />
       <div className="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-white opacity-80 blur-[60px]" />
