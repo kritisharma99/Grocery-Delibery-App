@@ -1,4 +1,4 @@
-import logo from "../assets/carrot.svg";
+import logo from "../assets/carrot 3.svg";
 import { useNavigate } from "react-router-dom";
 
 export function OnboardingPage() {

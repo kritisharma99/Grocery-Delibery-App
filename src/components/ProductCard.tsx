@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Plus, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../stores/cartStores";
@@ -17,17 +16,17 @@ export default function ProductCard({
   id: number;
 }) {
   const navigate = useNavigate();
-  const addToCart = useCartStore((s) => s.addToCart);
-  const cartItems = useCartStore((s) => s.items);
+  const addToCart = useCartStore((s) => s.addToCart)
+  const cartItems = useCartStore((s) => s.items)
 
-  const isInCart = cartItems.some((item) => item.productId === String(id));
+  const isInCart = cartItems.some((item) => item.productId === String(id))
 
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.stopPropagation();
+    e.stopPropagation()
     if (!isInCart) {
-      addToCart(String(id));
+      addToCart(String(id))
     }
-  };
+  }
 
   return (
     <div
@@ -52,13 +51,12 @@ export default function ProductCard({
               : "bg-primary text-white hover:bg-primary-hover"
           }`}
         >
-          {isInCart ? (
-            <Check className="h-4 w-4" />
-          ) : (
-            <Plus className="h-4 w-4" />
-          )}
+          {isInCart
+            ? <Check className="h-4 w-4" />
+            : <Plus className="h-4 w-4" />
+          }
         </button>
       </div>
     </div>
-  );
+  )
 }
