@@ -1,88 +1,103 @@
 @import "tailwindcss";
 
+/* ── Gilroy Font Faces ── */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Global Font (ONLY Gilroy) ── */
 :root {
-  font-family: "Gilroy", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-weight-default: 600;
-  --font-size-default: 26px;
-  --line-height-default: 29px;
-  --letter-spacing-default: 0px;
-  --text-align-default: center;
-  --color-primary: #53b175;
-  --color-primary-hover: #49a06a;
-  --color-background: #e9e9e9;
-  --color-surface-dark: #1f2937;
-  --color-text-primary: #181725;
-  --color-text-on-primary: #ffffff;
-  --color-text-muted-on-dark: rgba(255, 255, 255, 0.8);
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --space-page: 28px;
+  font-family: 'Gilroy', sans-serif;
 }
 
 body {
+  font-family: 'Gilroy', sans-serif;
   margin: 0;
-  font-family: inherit;
-  font-weight: var(--font-weight-default);
-  font-size: var(--font-size-default);
-  line-height: var(--line-height-default);
-  letter-spacing: var(--letter-spacing-default);
-  text-align: var(--text-align-default);
-  color: var(--color-text-primary);
-  background-color: var(--color-background);
+  padding: 0;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
+/* ── Theme Variables ── */
+:root {
+  --color-primary:          #53b175;
+  --color-primary-hover:    #49a06a;
+  --color-background:       #e9e9e9;
+  --color-surface-dark:     #1f2937;
+  --color-text-primary:     #181725;
+  --color-text-on-primary:  #ffffff;
+  --color-text-muted-on-dark: rgba(255, 255, 255, 0.8);
+
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-pill: 18px;
+  --space-page:  28px;
 }
 
-.bg-app {
-  background-color: var(--color-background);
-}
+/* ── Components ── */
+@layer components {
 
-.bg-primary {
-  background-color: var(--color-primary);
-}
+  .btn-primary {
+    @apply flex w-full items-center justify-center transition
+           active:scale-95 disabled:opacity-50;
 
-.text-on-primary {
-  color: var(--color-text-on-primary);
-}
+    height: 67px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
 
-.text-muted-on-dark {
-  color: var(--color-text-muted-on-dark);
-}
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-primary) 35%, transparent);
+  }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  font-size: 18px;
-  border-radius: var(--radius-lg);
-  transition: background-color 0.2s ease-in-out;
-  cursor: pointer;
-}
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
 
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-on-primary);
-}
+  .text-heading {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 29px;
+    text-align: center;
+    color: var(--color-text-primary);
+  }
 
-.btn-primary:hover {
-  background-color: var(--color-primary-hover);
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  font-size: 12px;
-  cursor: pointer;
-}
+  .text-head {
+    font-family: 'Gilroy', sans-serif; /* ✅ fixed typo */
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: var(--color-text-primary);
+  }
 
-.btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(31, 41, 55, 0.75);
+  .text-subheading {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+  }
 }

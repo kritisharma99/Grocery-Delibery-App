@@ -1,0 +1,83 @@
+import vegetable from '../assets/vegetable.svg'
+
+export const productsList = [
+    // 🍌 Fruits
+    { id: 1, name: 'Organic Bananas', desc: '7pcs', price: '$4.99', image: '🍌', category: 'fruits',  categoryId: 1, description: 'Naturally sweet and rich in potassium, perfect for quick energy.' },
+    { id: 2, name: 'Red Apple', desc: '1kg', price: '$4.99', image: '🍎', category: 'fruits', categoryId: 1, description: 'Crisp and juicy apples packed with fiber and antioxidants.' },
+    { id: 7, name: 'Avocado', desc: '1pc', price: '$3.49', image: '🥑', category: 'fruits',  categoryId: 1, description: 'Creamy fruit rich in healthy fats, great for toast and salads.' },
+    { id: 8, name: 'Watermelon', desc: '1pc', price: '$5.99', image: '🍉', category: 'fruits',  categoryId: 1, description: 'Refreshing and hydrating fruit, perfect for summer.' },
+  
+    // 🥦 Vegetables
+    { id: 3, name: 'Bell Pepper', desc: '1kg', price: '$3.99', image: '🫑', category: 'vegetables', categoryId: 1, description: 'Crunchy and colorful, adds flavor to dishes.' },
+    { id: 5, name: 'Red Capsicum', desc: '500g', price: '$1.50', image: '🌶️', category: 'vegetables',  categoryId: 1, description: 'Sweet and tangy, rich in vitamin C.' },
+    { id: 6, name: 'Broccoli', desc: '1kg', price: '$2.99', image: '🥦', category: 'vegetables',  categoryId: 1, description: 'Loaded with nutrients and antioxidants.' },
+    { id: 4, name: 'Ginger', desc: '250g', price: '$2.99', image: '🫚', category: 'vegetables',  categoryId: 1, description: 'Aromatic root used for flavor and immunity.' },
+  
+    // 🥛 Dairy & Eggs
+    { id: 9, name: 'Milk', desc: '1L', price: '$2.49', image: '🥛', category: 'dairy', categoryId: 5, description: 'Fresh dairy milk rich in calcium.' },
+    { id: 10, name: 'Eggs', desc: '12pcs', price: '$3.99', image: '🥚', category: 'dairy',  categoryId: 5, description: 'Farm fresh eggs, high in protein.' },
+    { id: 11, name: 'Cheese', desc: '200g', price: '$4.49', image: '🧀', category: 'dairy',  categoryId: 5, description: 'Creamy cheese perfect for sandwiches.' },
+  
+    // 🥐 Bakery & Snacks
+    { id: 12, name: 'Bread', desc: '400g', price: '$2.00', image: '🍞', category: 'bakery',  categoryId: 4, description: 'Soft and fresh bread for daily use.' },
+    { id: 13, name: 'Croissant', desc: '2pcs', price: '$3.50', image: '🥐', category: 'bakery',  categoryId: 4, description: 'Buttery and flaky French pastry.' },
+    { id: 14, name: 'Cookies', desc: '250g', price: '$2.99', image: '🍪', category: 'bakery',  categoryId: 4, description: 'Crispy and delicious snack cookies.' },
+  
+    // 🥤 Beverages
+    { id: 15, name: 'Coca Cola', desc: '330ml', price: '$1.99', image: '🥤', category: 'beverages',  categoryId: 6, description: 'Classic chilled soft drink.' },
+    { id: 16, name: 'Orange Juice', desc: '1L', price: '$3.99', image: '🧃', category: 'beverages',  categoryId: 6, description: 'Fresh orange juice full of vitamin C.' },
+    { id: 17, name: 'Green Tea', desc: '20 bags', price: '$2.99', image: '🍵', category: 'beverages',  categoryId: 6, description: 'Healthy and refreshing tea option.' },
+  
+    // 🍖 Meat & Fish
+    { id: 18, name: 'Chicken Breast', desc: '500g', price: '$6.99', image: '🍗', category: 'meat', categoryId: 3, description: 'Fresh chicken breast rich in protein.' },
+    { id: 19, name: 'Fish Fillet', desc: '400g', price: '$7.99', image: '🐟', category: 'meat',  categoryId: 3, description: 'Clean and fresh fish fillet.' },
+  
+    // 🫒 Cooking Oil & Ghee
+    { id: 20, name: 'Olive Oil', desc: '500ml', price: '$8.99', image: '🫒', category: 'oil', categoryId: 2, description: 'Healthy cooking oil for daily use.' },
+    { id: 21, name: 'Ghee', desc: '250g', price: '$5.99', image: '🧈', category: 'oil',  categoryId: 2, description: 'Pure desi ghee with rich flavor.' },
+  ]
+
+export const categories = [
+    {
+      id: 1,
+      name: 'Fresh Fruits\n& Vegetable',
+      emoji: vegetable,
+      bg: 'bg-green-50',
+      border: 'border-green-200',
+    },
+    {
+      id: 2,
+      name: 'Cooking Oil\n& Ghee',
+      emoji: vegetable,
+      bg: 'bg-yellow-50',
+      border: 'border-yellow-200',
+    },
+    {
+      id: 3,
+      name: 'Meat & Fish',
+      emoji: vegetable,
+      bg: 'bg-red-50',
+      border: 'border-red-200',
+    },
+    {
+      id: 4,
+      name: 'Bakery & Snacks',
+      emoji: '../assets/vegetable.svg',
+      bg: 'bg-purple-50',
+      border: 'border-purple-200',
+    },
+    {
+      id: 5,
+      name: 'Dairy & Eggs',
+      emoji: '../assets/vegetable.svg',
+      bg: 'bg-yellow-50',
+      border: 'border-yellow-200',
+    },
+    {
+      id: 6,
+      name: 'Beverages',
+      emoji: '../assets/vegetable.svg',
+      bg: 'bg-blue-50',
+      border: 'border-blue-200',
+    },
+  ]

@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { fakeApi } from '../lib/fakeApi'
 import type { User } from '../types/user'
-
+import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 
 type AuthStore = {
   user: User | null
@@ -19,35 +19,84 @@ type AuthStore = {
   signInWithProvider: (provider: 'google' | 'facebook') => Promise<void>
 }
 
-export const useAuthStore = create<AuthStore>((set) => ({
-  user: null,
-  otpSent: false,
-  countryCode: '+880',
-  phone: '',
-  authLoadingProvider: null,
-  login: async (email) => {
-    await fakeApi(true)
-    set({ user: { name: 'Guest User', email, location: '', verified: false }, otpSent: true })
-  },
-  signup: async (name, email) => {
-    await fakeApi(true)
-    set({ user: { name, email, location: '', verified: false }, otpSent: true })
-  },
-  verifyOtp: async () => {
-    await fakeApi(true)
-    set((state) => (state.user ? { user: { ...state.user, verified: true } } : state))
-  },
-  setLocation: (location) => set((state) => (state.user ? { user: { ...state.user, location } } : state)),
-  setCountryCode: (countryCode) => set({ countryCode }),
-  setPhone: (phone) => set({ phone }),
-  signInWithPhone: async (fullPhone) => {
-    set({ authLoadingProvider: 'phone' })
-    await fakeApi(fullPhone)
-    set({ authLoadingProvider: null, otpSent: true })
-  },
-  signInWithProvider: async (provider) => {
-    set({ authLoadingProvider: provider })
-    await fakeApi(true)
-    set({ authLoadingProvider: null })
-  },
-}))
+export const useAuthStore = create<AuthStore>()(
+  devtools(
+    persist(
+      (set) => ({
+        user: null,
+        otpSent: false,
+        countryCode: '+880',
+        phone: '',
+        authLoadingProvider: null,
+
+        login: async (email) => {
+          await fakeApi(true)
+          set(
+            { user: { name: 'Guest User', email, location: '', verified: false }, otpSent: true },
+            false,
+            'auth/login'
+          )
+        },
+
+        signup: async (name, email) => {
+          await fakeApi(true)
+          set(
+            { user: { name, email, location: '', verified: false }, otpSent: true },
+            false,
+            'auth/signup'
+          )
+        },
+
+        verifyOtp: async () => {
+          await fakeApi(true)
+          set(
+            (state) =>
+              state.user ? { user: { ...state.user, verified: true } } : state,
+            false,
+            'auth/verifyOtp'
+          )
+        },
+
+        setLocation: (location) =>
+          set(
+            (state) =>
+              state.user ? { user: { ...state.user, location } } : state,
+            false,
+            'auth/setLocation'
+          ),
+
+        setCountryCode: (countryCode) =>
+          set({ countryCode }, false, 'auth/setCountryCode'),
+
+        setPhone: (phone) =>
+          set({ phone }, false, 'auth/setPhone'),
+
+        signInWithPhone: async (fullPhone) => {
+          set({ authLoadingProvider: 'phone' }, false, 'auth/signInWithPhone/start')
+          await fakeApi(fullPhone)
+          set({ authLoadingProvider: null, otpSent: true }, false, 'auth/signInWithPhone/done')
+        },
+
+        signInWithProvider: async (provider) => {
+          set({ authLoadingProvider: provider }, false, 'auth/signInWithProvider/start')
+          await fakeApi(true)
+          set({ authLoadingProvider: null }, false, 'auth/signInWithProvider/done')
+        },
+      }),
+      {
+        name: 'auth-storage', // 🔥 key in localStorage
+
+        // ✅ Persist only important data (avoid UI states)
+        partialize: (state) => ({
+          user: state.user,
+          countryCode: state.countryCode,
+          phone: state.phone,
+        }),
+
+        // (optional) change storage
+        storage: createJSONStorage(() => localStorage),
+      }
+    ),
+    { name: 'AuthStore' }
+  )
+)

@@ -15,7 +15,7 @@ export function SplashPage() {
   return (
     <main
       aria-label="Splash screen"
-      className="bg-primary text-on-primary flex min-h-screen items-center justify-center"
+      className="bg-green-600 text-on-primary flex min-h-screen items-center justify-center"
     >
       <img src={splashLogo} alt="Nectar logo" className="w-56 max-w-[80vw]" />
       <p className="sr-only">Loading app, redirecting to onboarding.</p>
