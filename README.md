@@ -6,11 +6,11 @@ A fully responsive grocery delivery web application built from a mobile-first Fi
 
 ## 🔗 Live Demo
 
-👉 _Add your deployed link here (Vercel / Netlify)_
+[👉 _Live_](https://grocery-delibery-app.vercel.app/)
 
 ## 📂 GitHub Repository
 
-👉 _Add your repo link here_
+[👉 _Github Link_](https://github.com/kritisharma99/Grocery-Delibery-App/)
 
 ---
 
