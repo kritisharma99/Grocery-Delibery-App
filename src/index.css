@@ -27,10 +27,10 @@
 
 /* ── Tailwind v4 Theme Tokens ── */
 @theme {
-  --color-primary:       #53b175;
+  --color-primary: #53b175;
   --color-primary-hover: #49a06a;
-  --color-surface:       #f5f5f5;
-  --color-text-base:     #181725;
+  --color-surface: #f5f5f5;
+  --color-text-base: #181725;
 
   --font-family-gilroy: "Gilroy", sans-serif;
 
@@ -40,12 +40,13 @@
   --height-btn: 67px;
 
   --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.12);
-  --shadow-card:  0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* ── Global Base ── */
 @layer base {
-  html, body {
+  html,
+  body {
     font-family: "Gilroy", sans-serif;
     margin: 0;
     padding: 0;

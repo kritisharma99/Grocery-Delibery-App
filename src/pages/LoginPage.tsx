@@ -5,21 +5,21 @@ import { PageShell } from "../components/PageShell";
 import { Eye, EyeOff } from "lucide-react";
 import carrotLogo from "../assets/carrot 3.svg";
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validateForm(email: string, password: string) {
-  const errors: { email?: string; password?: string } = {}
+  const errors: { email?: string; password?: string } = {};
   if (!email) {
-    errors.email = "Email is required"
+    errors.email = "Email is required";
   } else if (!EMAIL_REGEX.test(email)) {
-    errors.email = "Enter a valid email address"
+    errors.email = "Enter a valid email address";
   }
   if (!password) {
-    errors.password = "Password is required"
+    errors.password = "Password is required";
   } else if (password.length < 6) {
-    errors.password = "Password must be at least 6 characters"
+    errors.password = "Password must be at least 6 characters";
   }
-  return errors
+  return errors;
 }
 
 export function LoginPage() {
@@ -32,16 +32,16 @@ export function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [touched, setTouched] = useState({ email: false, password: false });
 
-  const errors = validateForm(email, password)
-  const isValid = Object.keys(errors).length === 0
+  const errors = validateForm(email, password);
+  const isValid = Object.keys(errors).length === 0;
 
   const handleBlur = (field: "email" | "password") => {
-    setTouched((prev) => ({ ...prev, [field]: true }))
-  }
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
 
   const handleLogin = async () => {
     // touch all fields on submit to show all errors
-    setTouched({ email: true, password: true })
+    setTouched({ email: true, password: true });
     if (!isValid) return;
     setIsLoading(true);
     await login(email);
@@ -52,10 +52,13 @@ export function LoginPage() {
   return (
     <PageShell>
       <div className="flex min-h-screen flex-col px-6 py-4 md:min-h-full">
-
         {/* Logo */}
         <div className="mb-8 flex justify-center pt-8">
-          <img src={carrotLogo} alt="Carrot logo" className="h-14 w-auto object-contain" />
+          <img
+            src={carrotLogo}
+            alt="Carrot logo"
+            className="h-14 w-auto object-contain"
+          />
         </div>
 
         {/* Title */}
@@ -68,7 +71,6 @@ export function LoginPage() {
 
         {/* Form */}
         <div className="space-y-6">
-
           {/* Email */}
           <div>
             <label className="mb-2 block text-sm text-gray-500">Email</label>
@@ -110,7 +112,11 @@ export function LoginPage() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-400"
               >
-                {showPassword ? <Eye className="h-5 w-5" /> : <EyeOff className="h-5 w-5" />}
+                {showPassword ? (
+                  <Eye className="h-5 w-5" />
+                ) : (
+                  <EyeOff className="h-5 w-5" />
+                )}
               </button>
             </div>
             {touched.password && errors.password && (

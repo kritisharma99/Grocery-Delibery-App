@@ -1,4 +1,4 @@
-import { X, Check } from "lucide-react"
+import { X, Check } from "lucide-react";
 
 const FILTER_CATEGORIES = [
   "Eggs",
@@ -9,17 +9,16 @@ const FILTER_CATEGORIES = [
   "Vegetables",
   "Beverages",
   "Dairy",
-]
-
+];
 
 interface FilterPanelProps {
-  selectedCategories: string[]
-  selectedBrands: string[]
-  onToggleCategory: (val: string) => void
-  onToggleBrand: (val: string) => void
-  onApply: () => void
-  onClose: () => void
-  variant?: "sheet" | "inline" | "dropdown"
+  selectedCategories: string[];
+  selectedBrands: string[];
+  onToggleCategory: (val: string) => void;
+  onToggleBrand: (val: string) => void;
+  onApply: () => void;
+  onClose: () => void;
+  variant?: "sheet" | "inline" | "dropdown";
 }
 
 function CheckItem({
@@ -27,9 +26,9 @@ function CheckItem({
   checked,
   onToggle,
 }: {
-  label: string
-  checked: boolean
-  onToggle: () => void
+  label: string;
+  checked: boolean;
+  onToggle: () => void;
 }) {
   return (
     <button
@@ -38,24 +37,20 @@ function CheckItem({
     >
       <div
         className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition ${
-          checked
-            ? "border-primary bg-primary"
-            : "border-gray-300 bg-white"
+          checked ? "border-primary bg-primary" : "border-gray-300 bg-white"
         }`}
       >
         {checked && <Check className="h-3 w-3 text-white" strokeWidth={3} />}
       </div>
       <span
         className={`text-sm transition ${
-          checked
-            ? "font-semibold text-primary"
-            : "font-medium text-gray-700"
+          checked ? "font-semibold text-primary" : "font-medium text-gray-700"
         }`}
       >
         {label}
       </span>
     </button>
-  )
+  );
 }
 
 function FilterContent({
@@ -67,7 +62,7 @@ function FilterContent({
   onClose,
   showCloseInHeader = false,
 }: FilterPanelProps & { showCloseInHeader?: boolean }) {
-  const activeCount = selectedCategories.length + selectedBrands.length
+  const activeCount = selectedCategories.length + selectedBrands.length;
 
   return (
     <div className="flex h-full flex-col">
@@ -84,8 +79,8 @@ function FilterContent({
         <h2 className="text-base font-semibold text-gray-900">Filters</h2>
         <button
           onClick={() => {
-            onToggleCategory("__clear__")
-            onToggleBrand("__clear__")
+            onToggleCategory("__clear__");
+            onToggleBrand("__clear__");
           }}
           className="absolute right-0 text-xs font-semibold text-primary"
         >
@@ -122,7 +117,7 @@ function FilterContent({
         </button>
       </div>
     </div>
-  )
+  );
 }
 
 export function FilterPanel({
@@ -134,7 +129,6 @@ export function FilterPanel({
   onClose,
   variant = "sheet",
 }: FilterPanelProps) {
-
   // ── Dropdown ──
   if (variant === "dropdown") {
     return (
@@ -151,7 +145,7 @@ export function FilterPanel({
           />
         </div>
       </>
-    )
+    );
   }
 
   // ── Mobile sheet ──
@@ -171,7 +165,7 @@ export function FilterPanel({
           />
         </div>
       </>
-    )
+    );
   }
 
   // ── Desktop inline ──
@@ -186,5 +180,5 @@ export function FilterPanel({
         onClose={onClose}
       />
     </div>
-  )
+  );
 }
