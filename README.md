@@ -1,73 +1,230 @@
-# React + TypeScript + Vite
+# 🛒 Grocery Delivery Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive grocery delivery web application built from a mobile-first Figma design. This project demonstrates real-world frontend architecture, state management using Zustand, and scalable UI development using React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🔗 Live Demo
 
-## React Compiler
+👉 *Add your deployed link here (Vercel / Netlify)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 GitHub Repository
 
-## Expanding the ESLint configuration
+👉 *Add your repo link here*
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📱 Figma Reference (Mandatory)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This project is strictly implemented based on the provided Figma design:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+👉 https://www.figma.com/design/mI1gLnfy9eSvMg6I6TCPJY/Frontend-Grocery-App-Test
+
+* All screens, flows, and UI decisions are derived from this design.
+* Mobile-first approach followed exactly as per Figma.
+* Desktop UI is custom-designed while maintaining UX consistency.
+
+---
+
+## 🎯 Objective
+
+Convert a mobile grocery delivery app design into a **fully responsive production-ready web application**, focusing on:
+
+* Scalable frontend architecture
+* Efficient global state management
+* Pixel-accurate UI implementation
+* Responsive design principles
+
+---
+
+## ⚙️ Tech Stack
+
+### ✅ Mandatory
+
+* **React** (Vite / Next.js)
+* **TypeScript (Strict Mode)**
+* **Tailwind CSS**
+* **Zustand** (State Management)
+* **React Router** (if applicable)
+
+### ❌ Not Used
+
+* Redux / MobX / Context API
+* UI Libraries (MUI, AntD, Chakra, etc.)
+* Inline CSS styles
+
+---
+
+## 🚀 Features
+
+### 🔐 Authentication & Onboarding
+
+* Splash Screen
+* Onboarding / Welcome Screen
+* Login & Sign Up
+* OTP / Verification Flow
+* Location Selection
+
+### 🏠 Main Application
+
+* Home Screen
+* Category-Based Product Listing
+* Product Details Page
+* Search with Debouncing
+* Filters & Sorting
+* Favorites (Wishlist)
+* Cart Management
+
+### 💳 Checkout Flow
+
+* Order Success Screen
+* Order Failure / Error Handling
+
+---
+
+## 🧠 State Management (Zustand)
+
+Structured using multiple stores for scalability:
+
+* **Auth Store** → user authentication & session
+* **Product Store** → products, categories, filters
+* **Cart Store** → cart items, quantity, pricing
+* **UI Store** → loaders, modals, global UI states
+
+---
+
+## 📊 Data Handling
+
+* Mock JSON data used for:
+
+  * Products
+  * Categories
+* API calls simulated using `setTimeout`
+* Static assets used for images
+
+---
+
+## 🎨 UI & Styling (Tailwind CSS)
+
+* Utility-first approach
+* No custom CSS (except minimal cases)
+* Responsive breakpoints:
+
+  * `sm`, `md`, `lg`, `xl`
+* Consistent spacing, typography, and color system
+
+---
+
+## 📱 Responsive Design
+
+### ✅ Mobile (Primary Focus)
+
+* Pixel-perfect implementation from Figma
+* Bottom navigation
+* Card-based layouts
+* Smooth flows & interactions
+
+### 💻 Desktop (Custom Designed)
+
+* Max container width: `max-w-7xl`
+* Product grid (min 4 columns)
+* Sidebar for categories & filters
+* Sticky cart summary in checkout
+* Proper spacing (not stretched mobile UI)
+
+---
+
+## ✨ UX Enhancements (Bonus)
+
+* Skeleton loaders for async states
+* Empty states (Cart, Search, Favorites)
+* Error handling UI
+* Debounced search input
+* Basic keyboard accessibility
+* Smooth transitions & animations
+
+---
+
+## 📦 TypeScript Usage
+
+* Strict typing enforced (no `any`)
+* Interfaces:
+
+  * `Product`
+  * `CartItem`
+  * `User`
+* Enums:
+
+  * `OrderStatus`
+  * `ProductCategory`
+
+---
+
+## 🛠️ Setup Instructions
+
+```bash
+# Clone the repository
+git clone <your-repo-link>
+
+# Navigate to project
+cd grocery-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Folder Structure (Example)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+│── components/
+│── pages/
+│── stores/        # Zustand stores
+│── types/         # TypeScript interfaces & enums
+│── data/          # Mock JSON data
+│── hooks/
+│── utils/
+│── assets/
+```
+
+---
+
+## 🚀 Deployment
+
+* Deployed on **Vercel / Netlify**
+* Optimized for performance and responsiveness
+
+---
+
+## ✅ Evaluation Highlights
+
+* Clean and scalable architecture
+* Proper state separation using Zustand
+* Pixel-accurate Figma implementation
+* Strong responsive design handling
+* Type-safe codebase
+
+---
+
+## 📌 Notes
+
+* This project is frontend-only (no backend).
+* Focus is on UI/UX, state management, and responsiveness.
+* Designed with production-level practices in mind.
+
+---
+
+## 🙌 Author
+
+**Kriti Sharma**
+
+---
+
+## ⭐ If you like this project
+
+Give it a star ⭐ on GitHub and feel free to fork it!
