@@ -2,102 +2,92 @@
 
 /* ── Gilroy Font Faces ── */
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
-/* ── Global Font (ONLY Gilroy) ── */
-:root {
-  font-family: 'Gilroy', sans-serif;
-}
+/* ── Tailwind v4 Theme Tokens ── */
+@theme {
+  --color-primary:       #53b175;
+  --color-primary-hover: #49a06a;
+  --color-surface:       #f5f5f5;
+  --color-text-base:     #181725;
 
-body {
-  font-family: 'Gilroy', sans-serif;
-  margin: 0;
-  padding: 0;
-}
+  --font-family-gilroy: "Gilroy", sans-serif;
 
-/* ── Theme Variables ── */
-:root {
-  --color-primary:          #53b175;
-  --color-primary-hover:    #49a06a;
-  --color-background:       #e9e9e9;
-  --color-surface-dark:     #1f2937;
-  --color-text-primary:     #181725;
-  --color-text-on-primary:  #ffffff;
-  --color-text-muted-on-dark: rgba(255, 255, 255, 0.8);
-
-  --radius-md:   12px;
-  --radius-lg:   18px;
   --radius-pill: 18px;
-  --space-page:  28px;
+  --radius-card: 12px;
+
+  --height-btn: 67px;
+
+  --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card:  0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Global Base ── */
+@layer base {
+  html, body {
+    font-family: "Gilroy", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* ── Components ── */
 @layer components {
-
   .btn-primary {
-    @apply flex w-full items-center justify-center transition
-           active:scale-95 disabled:opacity-50;
-
-    height: 67px;
+    @apply flex w-full items-center justify-center
+           bg-primary text-white font-medium
+           transition active:scale-95 disabled:opacity-50
+           hover:bg-primary-hover;
+    height: var(--height-btn);
     border-radius: var(--radius-pill);
-    background-color: var(--color-primary);
-    color: var(--color-text-on-primary);
-    font-family: 'Gilroy', sans-serif;
-    font-weight: 500;
+    font-family: "Gilroy", sans-serif;
     font-size: 16px;
     line-height: 1;
-
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-primary) 35%, transparent);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--color-primary-hover);
+    box-shadow: 0 8px 24px color-mix(in srgb, #53b175 35%, transparent);
   }
 
   .text-heading {
-    font-family: 'Gilroy', sans-serif;
+    @apply text-center text-text-base;
+    font-family: "Gilroy", sans-serif;
     font-weight: 600;
     font-size: 26px;
     line-height: 29px;
-    text-align: center;
-    color: var(--color-text-primary);
   }
 
   .text-head {
-    font-family: 'Gilroy', sans-serif; /* ✅ fixed typo */
+    @apply text-center text-text-base;
+    font-family: "Gilroy", sans-serif;
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
-    text-align: center;
-    color: var(--color-text-primary);
   }
 
   .text-subheading {
-    font-family: 'Gilroy', sans-serif;
+    @apply text-center;
+    font-family: "Gilroy", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    text-align: center;
   }
 }

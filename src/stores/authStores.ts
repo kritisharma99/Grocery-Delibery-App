@@ -1,23 +1,23 @@
-import { create } from 'zustand'
-import { fakeApi } from '../lib/fakeApi'
-import type { User } from '../types/user'
-import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+import { create } from "zustand";
+import { fakeApi } from "../lib/fakeApi";
+import type { User } from "../types/user";
+import { devtools, persist, createJSONStorage } from "zustand/middleware";
 
 type AuthStore = {
-  user: User | null
-  otpSent: boolean
-  countryCode: string
-  phone: string
-  authLoadingProvider: 'phone' | 'google' | 'facebook' | null
-  login: (email: string) => Promise<void>
-  signup: (name: string, email: string) => Promise<void>
-  verifyOtp: () => Promise<void>
-  setLocation: (location: string) => void
-  setCountryCode: (countryCode: string) => void
-  setPhone: (phone: string) => void
-  signInWithPhone: (fullPhone: string) => Promise<void>
-  signInWithProvider: (provider: 'google' | 'facebook') => Promise<void>
-}
+  user: User | null;
+  otpSent: boolean;
+  countryCode: string;
+  phone: string;
+  authLoadingProvider: "phone" | "google" | "facebook" | null;
+  login: (email: string) => Promise<void>;
+  signup: (name: string, email: string) => Promise<void>;
+  verifyOtp: () => Promise<void>;
+  setLocation: (location: string) => void;
+  setCountryCode: (countryCode: string) => void;
+  setPhone: (phone: string) => void;
+  signInWithPhone: (fullPhone: string) => Promise<void>;
+  signInWithProvider: (provider: "google" | "facebook") => Promise<void>;
+};
 
 export const useAuthStore = create<AuthStore>()(
   devtools(
@@ -25,36 +25,47 @@ export const useAuthStore = create<AuthStore>()(
       (set) => ({
         user: null,
         otpSent: false,
-        countryCode: '+880',
-        phone: '',
+        countryCode: "+880",
+        phone: "",
         authLoadingProvider: null,
 
         login: async (email) => {
-          await fakeApi(true)
+          await fakeApi(true);
           set(
-            { user: { name: 'Guest User', email, location: '', verified: false }, otpSent: true },
+            {
+              user: {
+                name: "Guest User",
+                email,
+                location: "",
+                verified: false,
+              },
+              otpSent: true,
+            },
             false,
-            'auth/login'
-          )
+            "auth/login",
+          );
         },
 
         signup: async (name, email) => {
-          await fakeApi(true)
+          await fakeApi(true);
           set(
-            { user: { name, email, location: '', verified: false }, otpSent: true },
+            {
+              user: { name, email, location: "", verified: false },
+              otpSent: true,
+            },
             false,
-            'auth/signup'
-          )
+            "auth/signup",
+          );
         },
 
         verifyOtp: async () => {
-          await fakeApi(true)
+          await fakeApi(true);
           set(
             (state) =>
               state.user ? { user: { ...state.user, verified: true } } : state,
             false,
-            'auth/verifyOtp'
-          )
+            "auth/verifyOtp",
+          );
         },
 
         setLocation: (location) =>
@@ -62,29 +73,44 @@ export const useAuthStore = create<AuthStore>()(
             (state) =>
               state.user ? { user: { ...state.user, location } } : state,
             false,
-            'auth/setLocation'
+            "auth/setLocation",
           ),
 
         setCountryCode: (countryCode) =>
-          set({ countryCode }, false, 'auth/setCountryCode'),
+          set({ countryCode }, false, "auth/setCountryCode"),
 
-        setPhone: (phone) =>
-          set({ phone }, false, 'auth/setPhone'),
+        setPhone: (phone) => set({ phone }, false, "auth/setPhone"),
 
         signInWithPhone: async (fullPhone) => {
-          set({ authLoadingProvider: 'phone' }, false, 'auth/signInWithPhone/start')
-          await fakeApi(fullPhone)
-          set({ authLoadingProvider: null, otpSent: true }, false, 'auth/signInWithPhone/done')
+          set(
+            { authLoadingProvider: "phone" },
+            false,
+            "auth/signInWithPhone/start",
+          );
+          await fakeApi(fullPhone);
+          set(
+            { authLoadingProvider: null, otpSent: true },
+            false,
+            "auth/signInWithPhone/done",
+          );
         },
 
         signInWithProvider: async (provider) => {
-          set({ authLoadingProvider: provider }, false, 'auth/signInWithProvider/start')
-          await fakeApi(true)
-          set({ authLoadingProvider: null }, false, 'auth/signInWithProvider/done')
+          set(
+            { authLoadingProvider: provider },
+            false,
+            "auth/signInWithProvider/start",
+          );
+          await fakeApi(true);
+          set(
+            { authLoadingProvider: null },
+            false,
+            "auth/signInWithProvider/done",
+          );
         },
       }),
       {
-        name: 'auth-storage', // 🔥 key in localStorage
+        name: "auth-storage", // 🔥 key in localStorage
 
         // ✅ Persist only important data (avoid UI states)
         partialize: (state) => ({
@@ -95,8 +121,8 @@ export const useAuthStore = create<AuthStore>()(
 
         // (optional) change storage
         storage: createJSONStorage(() => localStorage),
-      }
+      },
     ),
-    { name: 'AuthStore' }
-  )
-)
+    { name: "AuthStore" },
+  ),
+);

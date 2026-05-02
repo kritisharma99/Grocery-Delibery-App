@@ -1,8 +1,8 @@
-import logo from '../assets/carrot.svg'
-import { useNavigate } from 'react-router-dom'
+import logo from "../assets/carrot.svg";
+import { useNavigate } from "react-router-dom";
 
 export function OnboardingPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <main className="bg-app flex h-screen w-full items-center justify-center overflow-hidden">
@@ -10,10 +10,8 @@ export function OnboardingPage() {
         aria-label="Welcome onboarding"
         className="relative h-screen w-full overflow-hidden bg-slate-900"
       >
-
         {/* Bottom Content */}
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-5 sm:px-7 md:px-10 pb-8 sm:pb-10 md:pb-12 pt-20 text-center text-white  w-full">
-
           {/* Logo */}
           <img
             src={logo}
@@ -40,7 +38,7 @@ export function OnboardingPage() {
               type="button"
               aria-label="Get started"
               className="btn btn-primary w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base"
-              onClick={() => navigate('/login')}
+              onClick={() => navigate("/login")}
             >
               Get Started
             </button>
@@ -48,5 +46,5 @@ export function OnboardingPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

@@ -1,20 +1,20 @@
-import { create } from 'zustand'
-import type { ProductCategory } from '../types/domain'
-import { persist, devtools, createJSONStorage } from 'zustand/middleware'
+import { create } from "zustand";
+import type { ProductCategory } from "../types/domain";
+import { persist, devtools, createJSONStorage } from "zustand/middleware";
 
 type ProductStore = {
-  favorites: string[]
-  filter: ProductCategory | 'all'
-  toggleFavorite: (id: string) => void
-  setFilter: (filter: ProductCategory | 'all') => void
-}
+  favorites: string[];
+  filter: ProductCategory | "all";
+  toggleFavorite: (id: string) => void;
+  setFilter: (filter: ProductCategory | "all") => void;
+};
 
 export const useProductStore = create<ProductStore>()(
   devtools(
     persist(
       (set) => ({
         favorites: [],
-        filter: 'all',
+        filter: "all",
 
         toggleFavorite: (id) =>
           set(
@@ -24,14 +24,13 @@ export const useProductStore = create<ProductStore>()(
                 : [...state.favorites, id],
             }),
             false,
-            'product/toggleFavorite'
+            "product/toggleFavorite",
           ),
 
-        setFilter: (filter) =>
-          set({ filter }, false, 'product/setFilter'),
+        setFilter: (filter) => set({ filter }, false, "product/setFilter"),
       }),
       {
-        name: 'product-storage',
+        name: "product-storage",
 
         // ✅ persist both (these are user preferences)
         partialize: (state) => ({
@@ -40,8 +39,8 @@ export const useProductStore = create<ProductStore>()(
         }),
 
         storage: createJSONStorage(() => localStorage),
-      }
+      },
     ),
-    { name: 'ProductStore' }
-  )
-)
+    { name: "ProductStore" },
+  ),
+);
